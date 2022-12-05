@@ -29,22 +29,9 @@
 #define UART_SERVICE_TX                         "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"      // VALUE: batVal Int, Prop: Write
 #define UART_SERVICE_RX                         "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"      // VALUE: batVal Int, Prop: Read | Notify
 
- /*
-        UUID_DATE_TIME_CHAR                     = 0x2A08,
-        UUID_CURRENT_TIME_CHAR                  = 0x2A2B,
-*/
 
-#define BLE_ADV_DIRECTED_ENABLED                true
 #define ADVERTISING_INTERVAL                    100                                 /**< The advertising interval (in units of 0.625 ms. This value corresponds to 40 ms). */
-
 #define APP_ADV_TIMEOUT_IN_SECONDS              30                                   /**< The advertising timeout (in units of seconds). */
-
-
-#define MIN_CONN_INTERVAL                       (double)7.5                         /**< Minimum acceptable connection interval (20 ms), Connection interval uses 1.25 ms units. */
-#define MAX_CONN_INTERVAL                       60                                  /**< Maximum acceptable connection interval (75 ms), Connection interval uses 1.25 ms units. */
-#define SLAVE_LATENCY                           0                                   /**< slave latency. */
-#define CONN_SUP_TIMEOUT                        40000                               /**< Connection supervisory timeout (4 seconds), Supervision Timeout uses 10 ms units. */
-
 
 #define TX_POWER                                0
 

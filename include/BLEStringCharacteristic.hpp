@@ -29,11 +29,6 @@ class BLEStringCharacteristic : public BLECharacteristic
      * @brief 
      * 
      */
-
-    /*
-    *
-    *
-    */
 };
 
 

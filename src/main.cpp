@@ -6,7 +6,6 @@
 extern "C" {
     #endif
         void SWI2_IRQHandler(void);
-        //void SWI2_IRQWakeUp(void);
     #ifdef __cplusplus
 }
 
@@ -39,22 +38,9 @@ BLEDescriptor UART_SERVICE_DESCRIPTOR = BLEDescriptor("2902", "BLE UART");
 String cpuID = "";
 
 unsigned long time_connect = 0;
-
-unsigned long local_time = 0;
-unsigned long current_time = 0;
-
-// bool flagUpdate = false;
-// unsigned long counterTick = 0;
-
-
-bool new_command = 0;       // 0 - open, 1 - close
-bool command = 0;           // 0 - open, 1 - close
-
-bool state = 0;             // 0 - open, 1 - close
-bool new_state = 0;         // 0 - open, 1 - close
-
+bool new_command = 0;       // 0 - false, 1 - true
+bool command = 0;           // 1 - open
 bool new_start = 0;
-
 unsigned long timeUp = 0;
 
 
@@ -136,13 +122,13 @@ void characteristicWrittenCallback(BLECentral& central, BLECharacteristic& chara
     {
         String message =  UART_SERVICE_RX_H.value();
 
-        Serial.println("*********");
-        Serial.print("Received Value: ");
+        // Serial.println("*********");
+        // Serial.print("Received Value: ");
 
-        Serial.print(message);
+        // Serial.print(message);
 
-        Serial.println();
-        Serial.println("*********");
+        // Serial.println();
+        // Serial.println("*********");
 
         if(message.indexOf("open") > -1) { command = 1; new_command = 1; }
 
@@ -188,9 +174,9 @@ void get_cpuID()
  */
 void setup()
 {
-    Serial.begin(115200);
+    // Serial.begin(115200);
     
-    pinMode(PIN_BUTTON1, INPUT_PULLUP);
+    pinMode(PIN_BUTTON1, INPUT);
 
     pinMode(PIN_LED1, OUTPUT); digitalWrite(PIN_LED1, LOW);
     pinMode(PIN_LED2, OUTPUT); digitalWrite(PIN_LED2, LOW);
@@ -237,7 +223,7 @@ void setup()
     /////////////////////("NRF_POWER_MODE_LOWPWR");	
     /////////////////////("=============");
 
-    NRF_GPIO->PIN_CNF[PIN_BUTTON1] |= ((uint32_t)GPIO_PIN_CNF_SENSE_Low << GPIO_PIN_CNF_SENSE_Pos);
+    NRF_GPIO->PIN_CNF[PIN_BUTTON1] |= ((uint32_t)GPIO_PIN_CNF_SENSE_High << GPIO_PIN_CNF_SENSE_Pos);
    
     sd_power_mode_set(SD_POWER_SYSTEM_OFF);
 }

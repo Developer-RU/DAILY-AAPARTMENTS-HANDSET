@@ -21,49 +21,9 @@
 #include "string.h"
 
 
-
-
 #define uchar unsigned char
 #define uint unsigned int
 
-
-/**
- * @brief 
- * 
- */
-//void SWI2_IRQHandler(void);
-
-/**
- * @brief 
- * 
- */
-//void SWI2_IRQWakeUp(void);
-
-
-/**
- * @brief 
- * 
- */
-//void TIMER1_IRQHandler(void);
-
-/**
- * @brief 
- * 
- */
-//void start_timer_1(void);
-
-
-/**
- * @brief 
- * 
- */
-//void TIMER2_IRQHandler(void);
-
-/**
- * @brief 
- * 
- */
-void start_timer_2(void);
 
 /**
  * @brief 
