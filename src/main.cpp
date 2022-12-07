@@ -180,7 +180,7 @@ void setup()
 
     // pinMode(PIN_LED1, OUTPUT); digitalWrite(PIN_LED1, LOW);
     pinMode(PIN_LED2, OUTPUT); digitalWrite(PIN_LED2, LOW);
-    pinMode(PIN_LED3, OUTPUT); digitalWrite(PIN_LED2, LOW);
+    pinMode(PIN_LED3, OUTPUT); digitalWrite(PIN_LED3, LOW);
 
     get_cpuID();
 
