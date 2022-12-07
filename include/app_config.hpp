@@ -31,7 +31,7 @@
 
 
 #define ADVERTISING_INTERVAL                    100                                 /**< The advertising interval (in units of 0.625 ms. This value corresponds to 40 ms). */
-#define APP_ADV_TIMEOUT_IN_SECONDS              30                                   /**< The advertising timeout (in units of seconds). */
+#define APP_ADV_TIMEOUT_IN_SECONDS              15                                   /**< The advertising timeout (in units of seconds). */
 
 #define TX_POWER                                0
 

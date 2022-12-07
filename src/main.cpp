@@ -242,7 +242,7 @@ void loop()
 
     if(millis() > timeUp + 15000)
     {
-        digitalWrite(PIN_LED1, LOW);
+        //digitalWrite(PIN_LED1, LOW);
 
         sd_ble_gap_adv_stop();
         new_start = 0; 
@@ -250,9 +250,9 @@ void loop()
     }
 
 
-    delay(200);
+    //delay(200);
     
-    digitalWrite(PIN_LED1, HIGH);
+    //digitalWrite(PIN_LED1, HIGH);
 
     blePeripheral.poll();
     BLECentral central = blePeripheral.central();
@@ -269,24 +269,17 @@ void loop()
 
                 if(command == 1)
                 {
+                                 
+                    delay(500); 
                     digitalWrite(PIN_LED2, HIGH);
+                    delay(2000); 
+
+
+                    digitalWrite(PIN_LED3, HIGH);
                     delay(2500); 
-
-
-                    digitalWrite(PIN_LED3, HIGH);
-                    delay(1500); 
                     digitalWrite(PIN_LED3, LOW);
-                    delay(500); 
+                    delay(3000); 
                     
-                    digitalWrite(PIN_LED3, HIGH);
-                    delay(1500); 
-                    digitalWrite(PIN_LED3, LOW);
-                    delay(500); 
-
-                    digitalWrite(PIN_LED3, HIGH);
-                    delay(1500); 
-                    digitalWrite(PIN_LED3, LOW);
-                    delay(500); 
 
                     
                     digitalWrite(PIN_LED2, HIGH);
@@ -296,18 +289,22 @@ void loop()
                     digitalWrite(PIN_LED2, LOW);
 
 
-                    timeUp = millis() + 30000;
+                    timeUp = millis() + APP_ADV_TIMEOUT_IN_SECONDS * 1000;
 
                     time_connect = millis() + APP_ADV_TIMEOUT_IN_SECONDS * 1000;
+
+                    sd_ble_gap_adv_stop();
+        new_start = 0; 
+        sd_power_system_off();
                 }
 
                 /* other commands */
             }
 
-            if(millis() > time_connect + APP_ADV_TIMEOUT_IN_SECONDS * 1000) { central.disconnect(); blePeripheral.disconnect(); }
+            if(millis() >= time_connect + APP_ADV_TIMEOUT_IN_SECONDS * 1000) { central.disconnect(); blePeripheral.disconnect(); }
 
             delay(10); 
-            sd_nvic_ClearPendingIRQ(SWI2_IRQn);
+            // sd_nvic_ClearPendingIRQ(SWI2_IRQn);
         }
     }
 }
