@@ -178,7 +178,7 @@ void setup()
     
     pinMode(PIN_BUTTON1, INPUT);
 
-    pinMode(PIN_LED1, OUTPUT); digitalWrite(PIN_LED1, LOW);
+    // pinMode(PIN_LED1, OUTPUT); digitalWrite(PIN_LED1, LOW);
     pinMode(PIN_LED2, OUTPUT); digitalWrite(PIN_LED2, LOW);
     pinMode(PIN_LED3, OUTPUT); digitalWrite(PIN_LED2, LOW);
 
@@ -294,14 +294,14 @@ void loop()
                     time_connect = millis() + APP_ADV_TIMEOUT_IN_SECONDS * 1000;
 
                     sd_ble_gap_adv_stop();
-        new_start = 0; 
-        sd_power_system_off();
+                    new_start = 0; 
+                    sd_power_system_off();
                 }
 
                 /* other commands */
             }
 
-            if(millis() >= time_connect + APP_ADV_TIMEOUT_IN_SECONDS * 1000) { central.disconnect(); blePeripheral.disconnect(); }
+            if(millis() >= time_connect + APP_ADV_TIMEOUT_IN_SECONDS * 1000) { central.disconnect(); blePeripheral.disconnect();  sd_ble_gap_adv_stop(); new_start = 0; sd_power_system_off(); }
 
             delay(10); 
             // sd_nvic_ClearPendingIRQ(SWI2_IRQn);
